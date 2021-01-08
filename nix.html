@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="description" content="NIX file format definition for Phoenix Maps">
+        <meta name="keywords" content="nix,phoenix,map,file,format">
+        <meta name="author" content="Without Haste">
+        <title>NIX File Format</title>
+		<link rel="stylesheet" type="text/css" href="phoenix_maps.css" />
+    </head>
+    <body>
+		<div id='titlebar'>
+			NIX File Format Definition
+		</div>
+		<div>
+			<p>
+				NIX is a text-based file format for <a href='index.html'>Phoenix Maps</a>.
+			</p>
+			<h3>File Format</h3>
+			Both sections are optional.<br/>
+			The tiles section defines the image part of the map.<br/>
+			The labels section defines text on top of the map.
+			<pre>
+TILES
+[tiles]
+
+LABELS
+[labels]	</pre>
+			<h3>[tiles] Section</h3>
+			The tiles section is a csv (comma-separated values).<br/>
+			• No spaces<br/>
+			• No quote marks<br/>
+			• One row of the map per row of csv
+			<pre>
+grass,floor-nw-wall,floor-n-wall,floor-ne-wall
+grass,floor-w-wall-door,floor,floor-e-wall</pre>
+			<h3>[labels] Section</h3>
+			The labels section is a csv (comma-separated values).<br/>
+			• Surround each label with double-quotes<br/>
+			• Do not use double-quotes within a label<br/>
+			• Each unit of label corresponds to one tile on the map<br/>
+			<br/>
+			Example of displaying map coordinates:
+			<pre>
+"A1","A2","A3","A4"
+"B1","B2","B3","B4"</pre>
+			<br/>
+			Example of one label and a lot of blanks:
+			<pre>
+,,,
+,"B2",,</pre>
+			<h3>Tile Names</h3>
+			todo
+		</div>
+    </body>
+</html>
