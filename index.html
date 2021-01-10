@@ -19,10 +19,10 @@
 				To start your map, select a tile and click on the map to place it.
 			</p>
 			<p>
-				To save the image, <i>Export PNG</i>. Maps are generated at 70 pixels per tile.
+				To save the image, <i>Download PNG</i>. Maps are generated at 70 pixels per tile.
 			</p>
 			<p>
-				Phoenix Maps does not use logins or save any data to a server. If you want to be able to edit the map later, <i>Export NIX</i>. This is a text-formatted file that you can re-import into Phoenix Maps later. <a href='nix.html'>NIX File Format Definition</a>
+				Phoenix Maps does not use logins or save any data to a server. If you want to be able to edit the map later, <i>Download NIX</i>. This is a text-formatted file that you can re-import into Phoenix Maps later. <a href='nix.html'>NIX File Format Definition</a>
 			</p>
 		</div>
 		<div id='workspace'>
@@ -33,19 +33,21 @@
 						<table>
 							<tr>
 								<td>
-									<a id='export-png' href='' download='map.png'>Download PNG</a>
-									<a id='export-nix' href='' download='map.nix'>Download NIX</a>
 								</td>
 								<td class='map-buttons'>
-									<button id='add-row-north'>+ 🡹</button>
-									<button id='minus-row-north'>- 🡻</button>
+									<span style='display: inline-block; float:left;'>
+										<a id='export-png' href='' download='map.png'>Download PNG</a><br/>
+										<a id='export-nix' href='' download='map.nix'>Download NIX</a>
+									</span>
+									<button id='add-row-north' title='Add row'>+ 🡹</button>
+									<button id='minus-row-north' title='Minus row'>- 🡻</button>
 								</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td class='map-buttons'>
-									<button id='add-row-west'>+ 🢀</button><br/><br/>
-									<button id='minus-row-west'>- 🢂</button>
+									<button id='add-row-west' title='Add column'>+ 🢀</button><br/><br/>
+									<button id='minus-row-west' title='Minus column'>- 🢂</button>
 								</td>
 								<td>
 									<div id='map-wrapper'>
@@ -53,15 +55,15 @@
 									</div>
 								</td>
 								<td class='map-buttons'>
-									<button id='add-row-east'>+ 🢂</button><br/><br/>
-									<button id='minus-row-east'>- 🢀</button>
+									<button id='add-row-east' title='Add column'>+ 🢂</button><br/><br/>
+									<button id='minus-row-east' title='Minus column'>- 🢀</button>
 								</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td class='map-buttons'>
-									<button id='add-row-south'>+ 🡻</button>
-									<button id='minus-row-south'>- 🡹</button>
+									<button id='add-row-south' title='Add row'>+ 🡻</button>
+									<button id='minus-row-south' title='Minus row'>- 🡹</button>
 								</td>
 								<td></td>
 							</tr>
