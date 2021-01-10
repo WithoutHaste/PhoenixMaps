@@ -170,10 +170,6 @@ function SetCanvasSize() {
 	let height = GetMapTileHeight() * pixelsPerTile;
 	canvas.setAttribute('width', width);
 	canvas.setAttribute('height', height);
-	
-	//const mapWrapper = document.getElementById('map-wrapper');
-	//mapWrapper.style.width = (width+16)+'px';
-	//mapWrapper.style.height = (height+16)+'px';
 }
 
 function GetMapTileWidth() {
