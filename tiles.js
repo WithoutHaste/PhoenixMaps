@@ -54,6 +54,8 @@ const v1_filenames = [
 	"floor-s-door-w-wall.png",
 ];
 
+var selectedTile = {};
+
 function InitTilesContainer(container, version) {
 	let filenames = v1_filenames;
 	container.innerHTML = "";
@@ -64,8 +66,36 @@ function InitTilesContainer(container, version) {
 		
 		let wrapper = document.createElement('div');
 		wrapper.classList.add('tile-wrapper');
+		wrapper.dataset.version = version;
+		wrapper.dataset.fileName = filename;
+		wrapper.addEventListener('click', SelectTile);
 		wrapper.appendChild(img);
 		
 		container.appendChild(wrapper);
 	});
+	
+	container.children[0].click();
+}
+
+function SelectTile(event) {
+	let element = event.target;
+	if(element.tagName.toLowerCase() == 'img')
+		element = element.parentElement;
+		
+	DeselectTiles();
+	selectedTile = {
+		version: element.dataset.version,
+		fileName: element.dataset.fileName
+	};
+	element.classList.add('selected');
+	
+	return false;
+}
+
+function DeselectTiles() {
+	const tiles = document.getElementsByClassName('tile-wrapper');
+	for(let i=0; i<tiles.length; i++)
+	{
+		tiles[i].classList.remove('selected');
+	}
 }

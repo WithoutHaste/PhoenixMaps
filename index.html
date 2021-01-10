@@ -6,8 +6,9 @@
         <meta name="keywords" content="phoenix,map,dungeons,dragons">
         <meta name="author" content="Without Haste">
         <title>Phoenix Maps</title>
-		<link rel="stylesheet" type="text/css" href="phoenix_maps.css" />
+		<link rel="stylesheet" type="text/css" href="maps.css" />
 		<script type="text/javascript" src="tiles.js"></script>
+		<script type="text/javascript" src="maps.js"></script>
     </head>
     <body>
 		<div id='titlebar'>
@@ -18,7 +19,7 @@
 				Phoenix Maps does not use logins or save any data to a server.
 			</p>
 			<p>
-				To save the image, <i>Export PNG</i>.
+				To save the image, <i>Export PNG</i>. Maps are generated at 70 pixels per tile.
 			</p>
 			<p>
 				If you want to be able to edit the map later, <i>Export NIX</i>. This is a text-formatted file that you can re-import into Phoenix Maps later. <a href='nix.html'>NIX File Format Definition</a>
@@ -36,4 +37,7 @@
 <script type='text/javascript'>
 const tilesContainer = document.getElementById('tiles');
 InitTilesContainer(tilesContainer, version.v1);
+
+const mapContainer = document.getElementById('map');
+InitMapContainer(mapContainer);
 </script>

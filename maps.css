@@ -47,3 +47,11 @@ div.tile-wrapper {
 div.tile-wrapper:hover {
 	background-color: yellow;
 }
+
+div.tile-wrapper.selected {
+	background-color: blue;
+}
+
+canvas {
+	display: block;
+}
