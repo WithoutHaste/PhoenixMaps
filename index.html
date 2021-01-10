@@ -32,7 +32,12 @@
 					<td>
 						<table>
 							<tr>
-								<td></td>
+								<td>
+									<form id='export-png-form' method="get" action="">
+										<button type="submit">Export PNG</button><br/>
+										<a id='export-nix' href='' download='map.nix'>Download NIX</a>
+									</form>
+								</td>
 								<td class='map-buttons'>
 									<button id='add-row-north'>+ 🡹</button>
 									<button id='minus-row-north'>- 🡻</button>
@@ -68,7 +73,7 @@
 			</table>
 		</div>
 		<div class='hidden'>
-			<img id='blank' src='tiles/blank.png' />
+			<img id='blank' src='tiles/blank.png'/>
 		</div>
     </body>
 </html>

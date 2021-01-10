@@ -58,6 +58,9 @@ function DrawMap() {
 			}
 		}
 	}
+	//let exportPng = document.getElementById('export-png-form');
+	//exportPng.action = canvas.toDataURL('image/png');
+	GenerateNix();
 }
 
 function PlaceTile(event) {
@@ -178,4 +181,30 @@ function GetMapTileWidth() {
 
 function GetMapTileHeight() {
 	return mapArray.length;
+}
+
+function GenerateNix() {
+	let tiles = "";
+	for(let y=0; y<GetMapTileHeight(); y++)
+	{
+		for(let x=0; x<GetMapTileWidth(); x++)
+		{
+			if(mapArray[y][x] == BLANK) {
+				tiles += ",";
+			}
+			else {
+				tiles += StripExtension(mapArray[y][x]) + ",";
+			}
+		}
+		tiles += "\n";
+	}
+	
+	let contents = ["TILES", "\n", tiles];
+	let blob = new Blob(contents, {type : 'text/plain'});	
+	let url = URL.createObjectURL(blob);
+	document.getElementById('export-nix').href = url;
+}
+
+function StripExtension(text) {
+	return text.split('.')[0];
 }
