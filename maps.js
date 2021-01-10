@@ -58,8 +58,7 @@ function DrawMap() {
 			}
 		}
 	}
-	//let exportPng = document.getElementById('export-png-form');
-	//exportPng.action = canvas.toDataURL('image/png');
+	GeneratePng();
 	GenerateNix();
 }
 
@@ -183,24 +182,35 @@ function GetMapTileHeight() {
 	return mapArray.length;
 }
 
+function GeneratePng() {
+	canvas.toBlob(FinishGeneratePng, 'image/png');
+	
+	function FinishGeneratePng(blob) {
+		let url = URL.createObjectURL(blob);
+		console.log(url);
+		document.getElementById('export-png').href = url;
+	}
+}
+
 function GenerateNix() {
 	let tiles = "";
 	for(let y=0; y<GetMapTileHeight(); y++)
 	{
 		for(let x=0; x<GetMapTileWidth(); x++)
 		{
+			let separator = (x < GetMapTileWidth() - 1) ? "," : "";
 			if(mapArray[y][x] == BLANK) {
-				tiles += ",";
+				tiles += separator;
 			}
 			else {
-				tiles += StripExtension(mapArray[y][x]) + ",";
+				tiles += StripExtension(mapArray[y][x]) + separator;
 			}
 		}
 		tiles += "\n";
 	}
 	
 	let contents = ["TILES", "\n", tiles];
-	let blob = new Blob(contents, {type : 'text/plain'});	
+	let blob = new Blob(contents, {type : 'text/nix'});	
 	let url = URL.createObjectURL(blob);
 	document.getElementById('export-nix').href = url;
 }
