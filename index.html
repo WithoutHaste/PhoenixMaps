@@ -16,28 +16,37 @@
 		</div>
 		<div>
 			<p>
-				Phoenix Maps does not use logins or save any data to a server.
+				To start your map, select a tile and click on the map to place it.
 			</p>
 			<p>
 				To save the image, <i>Export PNG</i>. Maps are generated at 70 pixels per tile.
 			</p>
 			<p>
-				If you want to be able to edit the map later, <i>Export NIX</i>. This is a text-formatted file that you can re-import into Phoenix Maps later. <a href='nix.html'>NIX File Format Definition</a>
+				Phoenix Maps does not use logins or save any data to a server. If you want to be able to edit the map later, <i>Export NIX</i>. This is a text-formatted file that you can re-import into Phoenix Maps later. <a href='nix.html'>NIX File Format Definition</a>
 			</p>
 		</div>
 		<div id='workspace'>
-			<div id='tiles'>
-			</div>
-			<div id='map'>
-			</div>
+			<table>
+				<tr>
+					<td><div id='tiles'></div></td>
+					<td><div id='map'></div></td>
+				</tr>
+			</table>
+		</div>
+		<div class='hidden'>
+			<img id='blank' src='tiles/blank.png' />
 		</div>
     </body>
 </html>
 
 <script type='text/javascript'>
-const tilesContainer = document.getElementById('tiles');
-InitTilesContainer(tilesContainer, version.v1);
+window.onload = function() {
+	const tilesContainer = document.getElementById('tiles');
+	InitTilesContainer(tilesContainer, version.v1);
 
-const mapContainer = document.getElementById('map');
-InitMapContainer(mapContainer);
+	const mapContainer = document.getElementById('map');
+	InitMapContainer(mapContainer);
+		
+	DrawMap();	
+};
 </script>

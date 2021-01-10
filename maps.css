@@ -17,15 +17,23 @@ body {
 	/* height: 800px; */
 }
 
+#workspace table {
+	width: 100%;
+}
+
+#workspace td {
+	vertical-align: top;
+}
+
 #tiles {
 	width: 106px;
+	height: 90vh;
 	overflow-y: auto;
 	border: 1px solid gray;
 }
 
 #map {
-	max-width: 100%;
-	max-height: 100%;
+	height: 90vh;
 	overflow-x: auto;
 	overflow-y: auto;
 	border: 1px solid gray;
@@ -53,5 +61,9 @@ div.tile-wrapper.selected {
 }
 
 canvas {
-	display: block;
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
 }
