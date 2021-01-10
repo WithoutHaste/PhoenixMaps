@@ -74,6 +74,7 @@ function AddRowNorth(event) {
 	{
 		mapArray[0].push(BLANK);
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -84,6 +85,7 @@ function MinusRowNorth(event) {
 		return;
 	}
 	mapArray.shift();
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -96,6 +98,7 @@ function AddRowSouth(event) {
 	{
 		mapArray[y].push(BLANK);
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -106,6 +109,7 @@ function MinusRowSouth(event) {
 		return;
 	}
 	mapArray.pop();
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -116,6 +120,7 @@ function AddRowWest(event) {
 	{
 		mapArray[y].unshift(BLANK);
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -129,6 +134,7 @@ function MinusRowWest(event) {
 	{
 		mapArray[y].shift();
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -139,6 +145,7 @@ function AddRowEast(event) {
 	{
 		mapArray[y].push(BLANK);
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
@@ -152,14 +159,21 @@ function MinusRowEast(event) {
 	{
 		mapArray[y].pop();
 	}
+	SetCanvasSize();
 	DrawMap();
 	
 	return false;
 }
 
 function SetCanvasSize() {
-	canvas.setAttribute('width', (GetMapTileWidth() * pixelsPerTile));
-	canvas.setAttribute('height', (GetMapTileHeight() * pixelsPerTile));
+	let width = GetMapTileWidth() * pixelsPerTile;
+	let height = GetMapTileHeight() * pixelsPerTile;
+	canvas.setAttribute('width', width);
+	canvas.setAttribute('height', height);
+	
+	//const mapWrapper = document.getElementById('map-wrapper');
+	//mapWrapper.style.width = (width+16)+'px';
+	//mapWrapper.style.height = (height+16)+'px';
 }
 
 function GetMapTileWidth() {

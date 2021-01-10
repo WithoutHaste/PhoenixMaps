@@ -32,11 +32,17 @@ body {
 	border: 1px solid gray;
 }
 
-#map {
+#map-wrapper {
+	width: 80vw;
 	height: 90vh;
 	overflow-x: auto;
 	overflow-y: auto;
+	text-align: center;
+	vertical-align: middle;
 	border: 1px solid gray;
+}
+
+#map {
 }
 
 pre {
