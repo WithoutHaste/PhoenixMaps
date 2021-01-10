@@ -60,6 +60,11 @@ div.tile-wrapper.selected {
 	background-color: blue;
 }
 
+td.map-buttons {
+	text-align: center;
+	vertical-align: middle;
+}
+
 canvas {
 	cursor: pointer;
 }
