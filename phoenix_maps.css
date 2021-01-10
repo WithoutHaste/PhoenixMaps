@@ -14,11 +14,11 @@ body {
 }
 
 #workspace {
+	/* height: 800px; */
 }
 
 #tiles {
-	width: 80px;
-	max-height: 100%;
+	width: 106px;
 	overflow-y: auto;
 	border: 1px solid gray;
 }
@@ -37,7 +37,13 @@ pre {
 	padding: 4px;
 }
 
-img.tile {
+div.tile-wrapper {
 	border: 1px solid black;
 	cursor: pointer;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+div.tile-wrapper:hover {
+	background-color: yellow;
 }

@@ -8,7 +8,8 @@ const v1_filenames = [
 	"grass.png",
 	"floor.png",
 	"wall.png",
-	"door.png",
+	"door-ns.png",
+	"door-we.png",
 	"stairs-ne-sw.png",
 	"stairs-nw-se.png",
 	"floor-n-wall.png",
@@ -60,6 +61,11 @@ function InitTilesContainer(container, version) {
 		let img = document.createElement('img');
 		img.src = "tiles/" + version + "/" + filename;
 		img.classList.add('tile');
-		container.appendChild(img);
+		
+		let wrapper = document.createElement('div');
+		wrapper.classList.add('tile-wrapper');
+		wrapper.appendChild(img);
+		
+		container.appendChild(wrapper);
 	});
 }
