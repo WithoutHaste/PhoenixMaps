@@ -39,6 +39,10 @@ function InitMapContainer(container) {
 	document.getElementById('minus-row-east').addEventListener('click', MinusRowEast);
 	document.getElementById('add-row-west').addEventListener('click', AddRowWest);
 	document.getElementById('minus-row-west').addEventListener('click', MinusRowWest);
+	
+	let fileImport = document.getElementById('file-import');
+	fileImport.addEventListener('change', ImportNix);
+	document.getElementById('import-nix').addEventListener('click', function(event) { fileImport.click(); });
 }
 
 function DrawMap() {
@@ -187,9 +191,12 @@ function GeneratePng() {
 	
 	function FinishGeneratePng(blob) {
 		let url = URL.createObjectURL(blob);
-		console.log(url);
 		document.getElementById('export-png').href = url;
 	}
+}
+
+function StripExtension(text) {
+	return text.split('.')[0];
 }
 
 function GenerateNix() {
@@ -215,6 +222,65 @@ function GenerateNix() {
 	document.getElementById('export-nix').href = url;
 }
 
-function StripExtension(text) {
-	return text.split('.')[0];
+function ImportNix(event) {
+	let file = event.target.files[0];
+	let reader = new FileReader();
+	reader.readAsText(file);
+	reader.onerror = function() {
+		console.log(reader.error);
+	};
+	reader.onload = ParseNix;
+	
+	function ParseNix() {
+		let fullText = reader.result;
+		let lines = fullText.split('\n');
+		let index = 0;
+		
+		if(lines[index] != 'VERSION') {
+			DisplayParseNixError("'VERSION' expected at first line");
+			return;
+		}
+		index++;
+		//TODO handle multiple versions
+		index++;
+		while(lines[index] == "" && index < lines.length)
+			index++;
+		
+		if(lines[index] != 'TILES') {
+			DisplayParseNixError("'TILES' expected after 'VERSION'");
+			return;
+		}
+		index++;
+		
+		InitMap();
+		let y = 0;
+		while(lines[index] != '' && lines[index] != 'LABELS' && index < lines.length)
+		{
+			if(y >= mapArray.length) {
+				mapArray.push([]);
+			}
+			let tiles = lines[index].split(',');
+			for(let x=0; x<tiles.length; x++) {
+				if(x >= mapArray[y].length) {
+					mapArray[y].push(BLANK);
+				}
+				let tile = tiles[x];
+				if(tile == "") {
+					mapArray[y][x] = BLANK;
+				}
+				else {
+					mapArray[y][x] = tile + ".png";
+				}
+			}
+			index++;
+			y++;
+		}	
+
+		SetCanvasSize();
+		DrawMap();
+	}
+	
+	function DisplayParseNixError(error) {
+		console.log("Error parsing NIX: " + error);
+	}
 }
