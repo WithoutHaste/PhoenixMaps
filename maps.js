@@ -209,7 +209,7 @@ function GenerateNix() {
 		tiles += "\n";
 	}
 	
-	let contents = ["TILES", "\n", tiles];
+	let contents = ["VERSION", "\n", selectedTile.version, "\n\n", "TILES", "\n", tiles];
 	let blob = new Blob(contents, {type : 'text/nix'});	
 	let url = URL.createObjectURL(blob);
 	document.getElementById('export-nix').href = url;
