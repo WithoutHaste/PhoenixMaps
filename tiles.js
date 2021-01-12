@@ -1,7 +1,8 @@
 //load tile options
 
-const version = {
-	v1: "v1"
+const versions = {
+	v1: "v1",
+	adventure_map: "adventure_map"
 };
 
 const v1_filenames = [
@@ -54,10 +55,21 @@ const v1_filenames = [
 	"floor-s-door-w-wall.png",
 ];
 
+const adventure_map_filenames = [
+	"plain.png",
+	"fields.png",
+	"forest.png",
+	"mountains.png",
+	"lake.png",
+	"river-ns.png"
+];
+
 var selectedTile = {};
 
 function InitTilesContainer(container, version) {
 	let filenames = v1_filenames;
+	if(version == versions.adventure_map)
+		filenames = adventure_map_filenames;
 	container.innerHTML = "";
 	filenames.forEach(filename => {
 		let img = document.createElement('img');
